@@ -12,18 +12,26 @@ public class HealthBarBehaviour : MonoBehaviour
 
     public void setHealth(float health, float maxHealth)
     {
-        slider.gameObject.SetActive(health < maxHealth);
+        //slider.gameObject.SetActive(health < maxHealth);
         slider.value = health;
         slider.maxValue = maxHealth;
         slider.fillRect.GetComponentInChildren<Image>().color = Color.Lerp(low, high, slider.normalizedValue);
     }
 
-    
-
-
-    public void disableHealthBar()
+    public void initHealthBar(float maxHealth)
     {
-        slider.gameObject.SetActive(false);
+        slider.value = maxHealth;
+        slider.maxValue = maxHealth;
+        slider.fillRect.GetComponentInChildren<Image>().color = Color.Lerp(low, high, slider.normalizedValue);
+    }
+
+
+    public void enableHealthBar()
+    {
+        slider.gameObject.SetActive(true);
+      
+        /*cara.gameObject.SetActive(false);
+        Debug.Log(cara);*/
     }
 
     void LateUpdate()

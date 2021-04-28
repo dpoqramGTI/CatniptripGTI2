@@ -3,7 +3,9 @@ guid: d44dd47ea08c0b440a7146db22599988
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - slider: {instanceID: 0}
+  - cara: {fileID: 3991751916053034461, guid: 439c473ec12cf6e4baec8a3acd257454, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

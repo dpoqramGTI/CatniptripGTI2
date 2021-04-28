@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Inicial.unity
+    guid: 90b26b665d3548f4db652b8a252f97d7
+  - enabled: 1
+    path: Assets/Scenes/Mapa1greyboxing.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/PantallaCarga.unity
+    guid: 27702d9b54a451b4aaf4747d69d182d1
   m_configObjects: {}

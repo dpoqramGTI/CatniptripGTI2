@@ -42,6 +42,7 @@ public class EnemyKeycat : GenericEnemy
         Debug.LogError("Me hallo muerto, hijo puta");
         // Este enemigo dropea una llave al morir
         dropItem();
+        NextLevel.keyOnPossesion = true;
         base.OnDeath();
     }
 }

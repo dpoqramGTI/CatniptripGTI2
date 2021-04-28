@@ -1,10 +1,18 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using Assets.Scenes;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
 public class Platformer3D : MonoBehaviour 
 {
+
+    public GameObject rojo;
+    public GameObject azul;
+    public GameObject verde;
+    public GameObject amarillo;
+
     CharacterController characterController;
     public Transform enemyTransform;
     public GenericEnemy enemigoClass;
@@ -27,37 +35,79 @@ public class Platformer3D : MonoBehaviour
     public float attackRadius = 3;
     // Propiedades healthbar
     public HealthBarBehaviour healthbar;
-    public float hitPoints;
-    public float maxHitPoints = 5;
+    private float hitPoints = 1;
+    private float maxHitPoints = 1;
     BlueBall bb;
     YellowBall yb;
     RedBall rb;
     GreenBall gb;
     int ballCount= 0;
     GameObject pistaController;
+    private bool initHealthBar = false;
 
     void Start()
     {
+        hitPoints = maxHitPoints;
+        healthbar.initHealthBar(maxHitPoints);
         bb = new BlueBall();
         rb = new RedBall();
         gb = new GreenBall();
         yb = new YellowBall();
         characterController = GetComponent<CharacterController>();
-        hitPoints = maxHitPoints;
-        healthbar.setHealth(hitPoints, maxHitPoints);
        // pistaController = GameObject.Find("mates");
        // pistaController.SetActive(false);
     }
     
     void Update()
     {
+        if (initHealthBar)
+        {
+            hitPoints = maxHitPoints;
+            healthbar.initHealthBar(maxHitPoints);
+            //initHealthBar = true;
+        }
         // Ataque
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             // Si el jugador ha seleccionado un arma
             ballCount++;
             if (ballCount > 3) ballCount = 0;
-
+            switch (ballCount)
+            {
+                case 0:
+                    Debug.Log(azul);
+                    dist = 0f;
+                    //Debug.DrawLine(enemyTransform.position, transform.position,Color.red,3f);
+                   
+                    //rb.atacar(shotRedBall);
+                    amarillo.SetActive(false);
+                    rojo.SetActive(false);
+                    verde.SetActive(false);
+                    azul.SetActive(true);
+                    break;
+                case 1:
+                    Debug.Log(rojo);
+                    amarillo.SetActive(false);
+                    rojo.SetActive(true);
+                    verde.SetActive(false);
+                    azul.SetActive(false);
+                    break;
+                case 2:
+                    Debug.Log(verde);
+                    //Debug.Log(shotGreenBall)
+                    amarillo.SetActive(false);
+                    rojo.SetActive(false);
+                    verde.SetActive(true);
+                    azul.SetActive(false);
+                    break;
+                case 3:
+                    Debug.Log(amarillo);
+                    amarillo.SetActive(true);
+                    rojo.SetActive(false);
+                    verde.SetActive(false);
+                    azul.SetActive(false);
+                    break;
+            }
         }
 
         // Ataque
@@ -67,30 +117,35 @@ public class Platformer3D : MonoBehaviour
             switch (ballCount)
             {
                 case 0:
-                    Debug.Log("Seleccionado Blue Ball");
+                    Debug.Log(azul);
                     dist = 0f;
                     //Debug.DrawLine(enemyTransform.position, transform.position,Color.red,3f);
                     bb.atacar(dist, enemigoClass);
                     //rb.atacar(shotRedBall);
+                    
                     break;
                 case 1:
-                    Debug.Log("Seleccionado Red Ball");
+                    Debug.Log(rojo);
                     rb.atacar(shotRedBall);
+                    
                     break;
                 case 2:
-                    Debug.Log("Seleccionado Green Ball");
+                    Debug.Log(verde);
                     //Debug.Log(shotGreenBall);
                     gb.atacar(shotGreenBall);
+                   
                     break;
                 case 3:
-                    Debug.Log("Seleccionado Yellow Ball");
+                    Debug.Log(amarillo);
+                   
                     yb.atacar(shotYellowBall);
+
                     break;
             }
-          /*
-           BLUE BALL
-           dist = Vector3.Distance(enemyTransform.position, transform.position);
-           bb.atacar(dist, enemigoClass);*/
+            /*
+             BLUE BALL
+             dist = Vector3.Distance(enemyTransform.position, transform.position);
+             bb.atacar(dist, enemigoClass);*/
 
         }
 
@@ -127,7 +182,7 @@ public class Platformer3D : MonoBehaviour
     }
     public void takeHit(float dmg)
     {
-        hitPoints -= dmg;
+        hitPoints -= 0.1f;
         healthbar.setHealth(hitPoints, maxHitPoints);
         //Debug.Log("hitpoints: " + hitPoints);
         //Debug.Log("maxhitpoints: " + maxHitPoints);
@@ -137,9 +192,16 @@ public class Platformer3D : MonoBehaviour
             OnDeath();
         }
     }
-    public void OnDeath()
+
+
+    public GameObject Miauerte;
+    
+    private void OnDeath()
     {
         Destroy(gameObject);
+        Miauerte.SetActive(true);
+        healthbar.setHealth(maxHitPoints, maxHitPoints);
+        
     }
 
     public void useSpeedItem()
