@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
             dist = Vector3.Distance(enemyTransform.position, transform.position);
             if (dist <= attackRadius)
             {
-                enemigoClass.takeHit(attackDmg);
+                enemigoClass.OnHit(attackDmg);
             }
         }
 

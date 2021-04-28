@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 461d91aa10dc98a4f8740b226349dac8
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - agent: {instanceID: 0}
+  - dropableItem: {fileID: 3221337832476233579, guid: 10af7f57b4c6d564495efadbeb1689bb, type: 3}
+  - playerUserController: {instanceID: 0}
+  - healthbar: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

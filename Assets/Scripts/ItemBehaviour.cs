@@ -17,10 +17,10 @@ public class ItemBehaviour : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject);
         if(other.gameObject.name.Equals("Third Person Player"))
         {
             GameObject.Find("Third Person Player").GetComponent<Platformer3D>().useSpeedItem();
+            Destroy(gameObject);
         }
     }
 }
