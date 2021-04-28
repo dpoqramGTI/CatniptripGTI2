@@ -15,16 +15,20 @@ public class HealthBarBehaviour : MonoBehaviour
         slider.gameObject.SetActive(health < maxHealth);
         slider.value = health;
         slider.maxValue = maxHealth;
-
         slider.fillRect.GetComponentInChildren<Image>().color = Color.Lerp(low, high, slider.normalizedValue);
     }
+
+    
+
 
     public void disableHealthBar()
     {
         slider.gameObject.SetActive(false);
     }
 
-    void Update()
+    void LateUpdate()
     {
+        transform.LookAt(Camera.main.transform);
+        transform.Rotate(0, 180, 0);
     }
 }
