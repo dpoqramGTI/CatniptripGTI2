@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7950788240823481429}
   - component: {fileID: 6948480085940774017}
   - component: {fileID: 6948480085940774028}
+  - component: {fileID: 370825048970989969}
   - component: {fileID: 7950788240823481426}
   - component: {fileID: 7950788240823481425}
   - component: {fileID: 7950788240823481424}
@@ -76,6 +77,37 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &370825048970989969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7950788240823481427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f784016a87c0b7743ab18a0f34459f4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 0}
+  currentCheckpoint: 0
+  attackRadius: 0
+  pursuitRadius: 0
+  movementSpeed: 0
+  attackDmg: 0
+  dropableItem: {fileID: 0}
+  playerUserController: {fileID: 0}
+  checkpoints: []
+  status: 0
+  patrolStatus: 0
+  healthbar: {fileID: 0}
+  hitPoints: 0
+  maxHitPoints: 0
+  SavedTime: 0
+  TimeBetweenAttacks: 0
+  OnDeathDisabledTime: 0
+  plataformaBoloncho: {fileID: 0}
+  plataformaEmbestida: {fileID: 0}
 --- !u!114 &7950788240823481426
 MonoBehaviour:
   m_ObjectHideFlags: 0

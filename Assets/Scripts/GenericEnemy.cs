@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 // Clase padre que extiende de monobehaviour
-// * Falta el script general que maneja las diferentes mecánicas del enemigo
+// * Falta el script general que maneja las diferentes mecï¿½nicas del enemigo
 public class GenericEnemy : MonoBehaviour
 {
     public NavMeshAgent agent;
@@ -20,7 +20,7 @@ public class GenericEnemy : MonoBehaviour
 
     // Referencia al script de control del jugador
     public Platformer3D playerUserController;
-    // Checkpoints por los que patrullará el enemigo
+    // Checkpoints por los que patrullarï¿½ el enemigo
     public Transform[] checkpoints;
 
     // Estado enemigo -> activo/desactivado (Sawcat)
@@ -126,13 +126,15 @@ public class GenericEnemy : MonoBehaviour
     }
     public virtual void OnHit(float ammount)
     {
-        Debug.Log("Te estan haciendo :" + ammount + " pts de daño");
+        Debug.Log("Te estan haciendo :" + ammount + " pts de daï¿½o");
         hitPoints -= ammount;
+        Debug.Log("TENIAS ESTOS ANTES: " + healthbar.getHealth());
         healthbar.onHit(ammount);
-        // Debug.Log("hitpoints: " + hitPoints);
+        Debug.Log("TIENES ESTOS AHORA: " + healthbar.getHealth());
         //Debug.Log("maxhitpoints: " + maxHitPoints);
         // Muerte
-        if (hitPoints <= 0)
+        //if (hitPoints <= 0)
+        if (healthbar.getHealth() <= 0f)
         {
             OnDeath();
             // Abajo esta la muerte generica con destruccion del gameobject

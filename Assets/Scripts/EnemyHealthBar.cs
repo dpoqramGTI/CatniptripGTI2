@@ -2,15 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class EnemyHealthBar : MonoBehaviour
 {
-    public float health;
-    public float maxHealth = 5;
+    private float health;
+    public float maxHealth;
 
     public GameObject enemyHBContainer;
-    public Slider slider;
+    public Slider enemyHealthBarSlider;
     public Transform playerTransform;
 
     private float attackDmg = 1;
@@ -21,7 +20,7 @@ public class EnemyHealthBar : MonoBehaviour
     void Start()
     {
         health = maxHealth;
-        slider.value = health;
+        enemyHealthBarSlider.value = health;
         //enemyHBContainer.SetActive(false);
     }
 
@@ -29,7 +28,7 @@ public class EnemyHealthBar : MonoBehaviour
     void Update()
     {
         transform.LookAt(playerTransform);
-        slider.value = health;
+        enemyHealthBarSlider.value = health;
         if (health < maxHealth)
         {
             enemyHBContainer.SetActive(true);
@@ -49,8 +48,10 @@ public class EnemyHealthBar : MonoBehaviour
 
     public void onHit(float attackDmg)
     {
+        Debug.Log("antes" + health);
         Debug.LogWarning("On hit barrraputa");
         health -= attackDmg;
+        Debug.Log("despues" + health);
     }
 
     internal void initHealth(float health)
@@ -62,6 +63,11 @@ public class EnemyHealthBar : MonoBehaviour
     {
         this.health = maxHealth;
         enemyHBContainer.SetActive(true);
+    }
+
+    public float getHealth()
+    {
+        return this.health;
     }
 }
 
